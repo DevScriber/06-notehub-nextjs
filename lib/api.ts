@@ -15,7 +15,7 @@ interface FetchNoteProps {
 
 interface CreateNoteParams {
   title: string;
-  content: string | null;
+  content: string;
   tag: Tags;
 }
 
@@ -70,9 +70,9 @@ export async function createNote(newNote: CreateNoteParams): Promise<Note> {
   }
 }
 
-export async function deleteNote(NoteId: string): Promise<Note> {
+export async function deleteNote(noteId: string): Promise<Note> {
   try {
-    const response = await axios.delete<Note>(`${url}/${NoteId}`, options);
+    const response = await axios.delete<Note>(`${url}/${noteId}`, options);
 
     return response.data;
   } catch (error) {
